@@ -45,6 +45,17 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
+    /*
+    The below JavaScript recieves the calculator values from the html onclick function when a number 
+    is pressed the a user. It then displays the number pressed and adds the number or operation to 
+    an array. 
+    
+    The display() function doesn't display the ops, but does display the numbers. 
+
+    The clearText() function clears the calculator display and pops all of the values from the array. 
+
+    Used a boolean variable "new_calculation" to determine if a new equation is being entered. 
+    */
     new_calculation = false; 
     let arr = [];
     function display(val){
@@ -63,7 +74,6 @@
                 document.getElementById("result").value = val;
             }
         }
-        
     }
     function clearText(){
         document.getElementById("result").value = '';
@@ -71,7 +81,15 @@
             arr.pop();
         }
     }
-
+    /*
+    sendToServer() collects the array and sends the values to the backend where the equations is evaluated. 
+    
+    On success it will log the result and display the result in the calculator. 
+    
+    If an error occurs then the word "ERROR" is displayed in the calculator (this is how divide by zero is handled). 
+    
+    The boolean "new_calculation" is set to true on error and success to allow the JS to determine its a new equation being entered. 
+    */
     function sendToServer(){
         console.log("Sending arr to server : " + arr);
 
